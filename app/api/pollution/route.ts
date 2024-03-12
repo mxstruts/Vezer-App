@@ -8,7 +8,8 @@ export async function GET(req: NextRequest) {
 		const lat = 40.4165
 		const lon = -3.7026
 
-		const url = `https://api.openweathermap.org/data/2.5/weather?lat=50.4501&lon=30.5234&appid=${apiKey}`
+		const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
+
 		const res = await axios.get(url)
 
 		return NextResponse.json(res.data)
