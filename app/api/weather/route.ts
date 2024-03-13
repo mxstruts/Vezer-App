@@ -5,10 +5,10 @@ export async function GET(req: NextRequest) {
 	try {
 		const apiKey = process.env.OPENWEATHERMAP_API_KEY
 
-		const lat = 40.4165
-		const lon = -3.7026
+		const lat = 50.4501
+		const lon = 30.5234
 
-		const url = `https://api.openweathermap.org/data/2.5/weather?lat=50.4501&lon=30.5234&appid=${apiKey}`
+		const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 		const res = await axios.get(url)
 
 		return NextResponse.json(res.data)
