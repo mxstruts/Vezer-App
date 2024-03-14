@@ -1,10 +1,14 @@
 import AirPollution from './Components/AirPollution/AirPollution'
 import DailyForecast from './Components/DailyForecast/DailyForecast'
+import FeelsLike from './Components/FeelsLike/FeelsLike'
+import Humidity from './Components/Humidity/Humidity'
 import Navbar from './Components/Navbar'
 import Population from './Components/Population/Population'
+import Pressure from './Components/Pressure/Pressure'
 import Sunset from './Components/Sunset/Sunset'
 import Temperature from './Components/Temperature/Temperature'
 import UvIndex from './Components/UvIndex/UvIndex'
+import Visibility from './Components/Visibility/Visibility'
 import Wind from './Components/Wind/Wind'
 
 export default function Home() {
@@ -23,9 +27,25 @@ export default function Home() {
 						<DailyForecast />
 						<UvIndex />
 						<Population />
+						<FeelsLike />
+						<Humidity />
+						<Visibility />
+						<Pressure />
 					</div>
 				</div>
 			</div>
+			<footer className='py-4 flex justify-center pb-8'>
+				<p className='footer-text text-sm flex items-center gap-1'>
+					Made by
+					<a
+						href='https://maksym-shatylo.vercel.app/'
+						target='_blank'
+						className=' text-purple-300 font-bold'
+					>
+						mxstruts
+					</a>
+				</p>
+			</footer>
 		</main>
 	)
 }
