@@ -38,7 +38,7 @@ export default function Home() {
 					<FiveDayForecast />
 				</div>
 				<div className='flex flex-col w-full'>
-					<div className='instruments grid h-full gap-4 col-span-full sm-2:col-span-2 lg:grid-cols-3 xl:grid-cols-4'>
+					<div className='instruments md:grid h-full gap-4 col-span-full sm-2:col-span-2 lg:grid-cols-3 xl:grid-cols-4 '>
 						<AirPollution />
 						<Sunset />
 						<Wind />
@@ -79,13 +79,12 @@ export default function Home() {
 			<footer className='py-4 flex justify-center pb-8'>
 				<p className='footer-text text-sm flex items-center gap-1'>
 					Made by
-					<Image src={'/logo-white.svg'} alt='logo' width={20} height={20} />
 					<a
-						href='https://thecodedealer.com'
+						href='https://maksym-shatylo.vercel.app/'
 						target='_blank'
-						className=' text-green-300 font-bold'
+						className=' text-purple-300 font-bold'
 					>
-						TheCodeDealer
+						mxstruts
 					</a>
 				</p>
 			</footer>
