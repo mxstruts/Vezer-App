@@ -20,18 +20,24 @@ function MapSection() {
 	return (
 		<Map
 			mapboxAccessToken={MAPBOX_TOKEN}
+			attributionControl={false}
 			initialViewState={{
 				longitude: activeCityCords.lon,
 				latitude: activeCityCords.lat,
-				zoom: 10,
+				zoom: 9,
 			}}
 			style={{
 				position: 'relative',
 				width: '100%',
 				height: '100%',
-				borderRadius: '10px',
+				flex: '1',
+				top: '0',
+				left: '0',
+				zIndex: 0,
 			}}
 			mapStyle='mapbox://styles/mapbox/streets-v11'
+			dragPan={false}
+			scrollZoom={false}
 		/>
 	)
 }
