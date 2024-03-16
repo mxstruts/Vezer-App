@@ -1,6 +1,6 @@
 'use Client'
 import axios from 'axios'
-import { createContext, useContext, useEffect, useState } from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 import defaultStates from '../utils/defaultStates'
 
 import { debounce } from 'lodash'
@@ -41,6 +41,7 @@ export const GlobalContextProvider = ({ children }) => {
 	const fetchFiveDayForecast = async (lat, lon) => {
 		try {
 			const res = await axios.get(`api/fiveday?lat=${lat}&lon=${lon}`)
+
 			setFiveDayForecast(res.data)
 		} catch (error) {
 			console.log('Error fetching five day forecast data: ', error.message)

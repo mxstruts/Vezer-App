@@ -1,62 +1,45 @@
 'use client'
-import React, { useEffect } from 'react'
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+
 import { useGlobalContext } from '@/app/context/globalContext'
+import * as React from 'react'
+import Map from 'react-map-gl'
+import { Skeleton } from '@/components/ui/skeleton'
 
-// @ts-ignore
-function FlyToActiveCity({ activeCityCords }) {
-	const map = useMap()
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
 
-	useEffect(() => {
-		if (activeCityCords) {
-			const zoomLev = 13
-			const flyToOptions = {
-				duration: 1.5,
-			}
-
-			map.flyTo(
-				[activeCityCords.lat, activeCityCords.lon],
-				zoomLev,
-				flyToOptions
-			)
-		}
-	}, [activeCityCords, map])
-
-	return null
-}
-
-function Mapbox() {
-	const { forecast } = useGlobalContext() // Your coordinates
-
-	const activeCityCords = forecast?.coord
-
-	if (!forecast || !forecast.coord || !activeCityCords) {
-		return (
-			<div>
-				<h1>Loading...</h1>
-			</div>
-		)
+function MapSection() {
+	const { fiveDayForecast } = useGlobalContext()
+	if (!fiveDayForecast || !fiveDayForecast.city) {
+		return <Skeleton className='h-[25rem]' />
 	}
 
-	return (
-		<div className='flex-1 basis-[50%] border rounded-lg'>
-			<MapContainer
-				center={[activeCityCords.lat, activeCityCords.lon]}
-				zoom={13}
-				scrollWheelZoom={false}
-				className='rounded-lg m-4'
-				style={{ height: 'calc(100% - 2rem)', width: 'calc(100% - 2rem)' }}
-			>
-				<TileLayer
-					url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-				/>
+	const { city } = fiveDayForecast
 
-				<FlyToActiveCity activeCityCords={activeCityCords} />
-			</MapContainer>
+	const lat = city.coord.lat
+	const lon = city.coord.lon
+
+	return (
+		<div className=' col-span-2 h-[25rem] overflow-hidden overscroll-contain  p-0 md:p-0 xl:col-span-3'>
+			<Map
+				mapboxAccessToken={MAPBOX_TOKEN}
+				initialViewState={{
+					longitude: lon,
+					latitude: lat,
+					zoom: 10,
+				}}
+				style={{
+					flex: '1',
+					position: 'relative',
+					width: '100%',
+					height: '100%',
+					top: '0',
+					left: '0',
+					zIndex: 0,
+				}}
+				mapStyle='mapbox://styles/mapbox/streets-v11'
+			/>
 		</div>
 	)
 }
 
-export default Mapbox
+export default MapSection
