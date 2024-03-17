@@ -12,14 +12,15 @@ export const GlobalContextProvider = ({ children }) => {
 	const [forecast, setForecast] = useState({})
 	const [geoCodedList, setGeoCodedList] = useState(defaultStates)
 	const [inputValue, setInputValue] = useState('')
-
-	const [activeCityCoords, setActiveCityCoords] = useState([
-		50.450001, 30.523333,
-	])
-
 	const [airQuality, setAirQuality] = useState({})
 	const [fiveDayForecast, setFiveDayForecast] = useState({})
 	const [uvIndex, seUvIndex] = useState({})
+
+	const [activeCityCoords, setActiveCityCoords] = useState([
+		50.4501,
+
+		30.5234,
+	])
 
 	const fetchForecast = async (lat, lon) => {
 		try {

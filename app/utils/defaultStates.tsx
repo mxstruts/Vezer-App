@@ -1,17 +1,39 @@
 const defaultStates = [
+	// give me also for a Kyiv
 	{
 		name: 'Kyiv',
 		country: 'UA',
-		state: 'Kyiv',
-		lat: 50.450001,
-		lon: 30.523333,
+		state: 'Kyiv City',
+		lat: 50.4501,
+		lon: 30.5234,
 	},
 	{
-		name: 'London',
-		country: 'GB',
-		state: 'England',
-		lat: 51.5074,
-		lon: 0.1278,
+		name: 'Bratislava',
+		country: 'SK',
+		state: 'Bratislava',
+		lat: 48.148598,
+		lon: 17.107748,
+	},
+	{
+		name: 'Horodnya',
+		country: 'UA',
+		state: 'Chernihiv',
+		lat: 51.8783,
+		lon: 31.5953,
+	},
+	{
+		name: 'Lviv',
+		country: 'UA',
+		state: 'Lviv',
+		lat: 49.8397,
+		lon: 24.0297,
+	},
+	{
+		name: 'Windsor',
+		country: 'CA',
+		state: 'Ontario',
+		lat: 42.3016,
+		lon: -83.0302,
 	},
 	{
 		name: 'New York',
@@ -20,20 +42,8 @@ const defaultStates = [
 		lat: 40.7128,
 		lon: -74.006,
 	},
-	{
-		name: 'Sydney',
-		country: 'AU',
-		state: 'New South Wales',
-		lat: -33.8688197,
-		lon: 151.2092955,
-	},
-	{
-		name: 'Barcelona',
-		country: 'ES',
-		state: 'Catalonia',
-		lat: 41.3828939,
-		lon: 2.1774322,
-	},
+
+	//add same data but for Bratislava, Toronto, horodnya, Windsor ON
 ]
 
 export default defaultStates

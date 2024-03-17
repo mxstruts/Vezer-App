@@ -10,22 +10,29 @@ function MapSection() {
 	const { fiveDayForecast } = useGlobalContext()
 	const { forecast } = useGlobalContext()
 	const activeCityCords = forecast?.coord
+	const { city } = fiveDayForecast
 
 	if (!fiveDayForecast || !fiveDayForecast.city || !activeCityCords) {
 		return <Skeleton className='h-[25rem]' />
 	}
 
-	const { city } = fiveDayForecast
-
+	const [viewport, setViewport] = useState({
+		latitude: activeCityCords.lat,
+		longitude: activeCityCords.lon,
+		zoom: 9,
+	})
+	useEffect(() => {
+		setViewport(prevViewport => ({
+			...prevViewport,
+			latitude: activeCityCords.lat,
+			longitude: activeCityCords.lon,
+		}))
+	}, [activeCityCords])
 	return (
 		<Map
 			mapboxAccessToken={MAPBOX_TOKEN}
 			attributionControl={false}
-			initialViewState={{
-				longitude: activeCityCords.lon,
-				latitude: activeCityCords.lat,
-				zoom: 9,
-			}}
+			{...viewport}
 			style={{
 				position: 'relative',
 				width: '100%',
